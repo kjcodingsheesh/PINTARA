@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 @font-face {
     font-family: 'Nerko One';
     src: url('../Fonts/NerkoOne-Regular.ttf') format('truetype');
@@ -277,6 +277,7 @@ canvas {
   max-height: 30vh;
   overflow-y: auto;
 }
+
 
 =======
 @font-face {
@@ -558,4 +559,3 @@ canvas {
   overflow-y: auto;
 }
 
->>>>>>> 8f29f47 (Pop-ups)
