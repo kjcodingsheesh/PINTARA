@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 
 document.addEventListener('DOMContentLoaded', () => {
     const bgMusic = document.getElementById('bgMusic');
@@ -1173,6 +1173,7 @@ canvas.addEventListener('mousemove', e => {
     socket.on('clearCanvas', clearCanvas);
 
 });
+
 
 =======
 
@@ -2349,4 +2350,4 @@ canvas.addEventListener('mousemove', e => {
     socket.on('clearCanvas', clearCanvas);
 
 });
->>>>>>> 8f29f47 (Pop-ups)
+
