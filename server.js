@@ -5,11 +5,7 @@ const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server);
 
-const PORT = process.env.PORT || 3000;
-
-server.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+const PORT = 3000;
 
 // Serve static files
 app.use(express.static('public'));
@@ -267,7 +263,4 @@ if (unusedWords.length === 0) {
 }
 
 // --- START SERVER ---
-if (require.main === module) {
-    server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
-}
-
+server.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
