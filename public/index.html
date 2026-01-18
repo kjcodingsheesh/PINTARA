@@ -281,8 +281,8 @@ canvas {
 
           <!-- Difficulty Buttons (already absolute) -->
           <button class="difficultyBtn setting-btn" data-value="madali">Madali</button>
-<button class="difficultyBtn setting-btn" data-value="katamtaman">Katamtaman</button>
-<button class="difficultyBtn setting-btn" data-value="mahirap">Mahirap</button>
+          <button class="difficultyBtn setting-btn" data-value="katamtaman">Katamtaman</button>
+          <button class="difficultyBtn setting-btn" data-value="mahirap">Mahirap</button>
 
 
           <!-- Genre Buttons (already absolute) -->
@@ -314,13 +314,13 @@ canvas {
 <div id="game">
   <h2 id="roundInfo">Round Info</h2>
   <p id="role">Role</p>
-  <p>Salitang Huhulaan: <strong><span id="wordText">—</span></strong></p>
+  <p id="wordContainer">Salitang Huhulaan: <strong><span id="wordText">—</span></strong></p>
   <p id="timer">Oras: 0s</p>
 
   <!-- DRAWER TOOLS -->
   <div id="drawerToolbar" style="display:none;">
     <label>
-      Brush Size:
+      Laki ng Brush:
       <input type="range" id="brushSize" min="1" max="15" value="4">
     </label>
 
@@ -329,13 +329,11 @@ canvas {
       <div id="colorPalette"></div>
     </div>
 
-    <label>
-      Uri ng Brush:
-      <select id="brushType">
-        <option value="round">Round</option>
-        <option value="marker">Marker</option>
-      </select>
-    </label>
+<div id="brushTypeContainer" style="position:absolute; display:none;">
+  <strong>Uri ng Brush:</strong><br>
+  <button class="brushTypeBtn" data-type="round">Round</button>
+  <button class="brushTypeBtn" data-type="marker">Marker</button>
+</div>
 
     <button id="clearCanvasBtn">Linisin</button>
   </div>

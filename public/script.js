@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', () => {
 "binti": "./Pop_ups/tao/madali/binti.png",
 "tiyan": "./Pop_ups/tao/madali/tiyan.png",
 "noo": "./Pop_ups/tao/madali/noo.png",
-"pisngi": "./Pop_ups/tao/madali/pisingi.png",
+"pisngi": "./Pop_ups/tao/madali/pisngi.png",
 "buhok": "./Pop_ups/tao/madali/buhok.png",
-"balikat": "./Pop_ups/tao/madali/balikAt.png",
+"balikat": "./Pop_ups/tao/madali/balikat.png",
 "kuko": "./Pop_ups/tao/madali/kuko.png",
 "tuhod": "./Pop_ups/tao/madali/tuhod.png",
 
@@ -120,11 +120,11 @@ document.addEventListener('DOMContentLoaded', () => {
 "sampagita": "./Pop_ups/kultura/madali/sampagita.png",
 "agila": "./Pop_ups/kultura/madali/agila.png",
 "arnis": "./Pop_ups/kultura/madali/arnis.png",
-"bahay kubo": "./Pop_ups/kultura/madali/bahay_kubo.png",
-"jose rizal": "./Pop_ups/kultura/madali/jose_rizal.png",
+"bahay kubo": "./Pop_ups/kultura/madali/bahay-kubo.png",
+"jose rizal": "./Pop_ups/kultura/madali/Jose_Rizal.png",
 "lechon": "./Pop_ups/kultura/madali/lechon.png",
 "kalesa": "./Pop_ups/kultura/madali/kalesa.png",
-"Bayanihan": "./Pop_ups/kultura/madali/Bayanihan.png",
+"Bayanihan": "./Pop_ups/kultura/madali/bayanihan.png",
 "batok": "./Pop_ups/kultura/madali/batok.png",
 // ===== KATAMTAMAN =====
 // Tao
@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
 "bewang": "./Pop_ups/tao/katamtaman/bewang.png",
 "talampakan": "./Pop_ups/tao/katamtaman/talampakan.png",
 "pusod": "./Pop_ups/tao/katamtaman/pusod.png",
-"pisngi": "./Pop_ups/tao/katamtaman/pisingi.png",
 "pulso": "./Pop_ups/tao/katamtaman/pulso.png",
 "pilikmata": "./Pop_ups/tao/katamtaman/pilikmata.png",
 "bungo": "./Pop_ups/tao/katamtaman/bungo.png",
@@ -144,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 "hinlalaki": "./Pop_ups/tao/katamtaman/hinlalaki.png",
 "hintuturo": "./Pop_ups/tao/katamtaman/hintuturo.png",
 "palasingsingan": "./Pop_ups/tao/katamtaman/palasingsingan.png",
-"kili-kili": "./Pop_ups/tao/katamtaman/kili_kili.png",
+"kili-kili": "./Pop_ups/tao/katamtaman/kili-kili.png",
 
 // Bagay
 "lagari": "./Pop_ups/bagay/katamtaman/lagari.png",
@@ -242,10 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
 "kalamnan": "./Pop_ups/tao/mahirap/kalamnan.png",
 "kalansay": "./Pop_ups/tao/mahirap/kalansay.png",
 "hinlalato": "./Pop_ups/tao/mahirap/hinlalato.png",
-"bukong-bukong": "./Pop_ups/tao/mahirap/bukong_bukong.png",
-"alak-alakan": "./Pop_ups/tao/mahirap/alak_alakan.png",
+"bukong-bukong": "./Pop_ups/tao/mahirap/bukong-bukong.png",
+"alak-alakan": "./Pop_ups/tao/mahirap/alak-alakan.png",
 "gulugod": "./Pop_ups/tao/mahirap/gulugod.png",
-"bahay-bata": "./Pop_ups/tao/mahirap/bahay_bata.png",
+"bahay-bata": "./Pop_ups/tao/mahirap/bahay-bata.png",
 "nunal": "./Pop_ups/tao/mahirap/nunal.png",
 "balintataw": "./Pop_ups/tao/mahirap/balintataw.png",
 "balat": "./Pop_ups/tao/mahirap/balat.png",
@@ -277,11 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
 "talaba": "./Pop_ups/hayop/mahirap/talaba.png",
 "alibangbang": "./Pop_ups/hayop/mahirap/alibangbang.png",
 "salaginto": "./Pop_ups/hayop/mahirap/salaginto.png",
-"baboy-ramo": "./Pop_ups/hayop/mahirap/baboy_ramo.png",
+"baboy-ramo": "./Pop_ups/hayop/mahirap/baboy-ramo.png",
 "tandang": "./Pop_ups/hayop/mahirap/tandang.png",
 "inahin": "./Pop_ups/hayop/mahirap/inahin.png",
 "talangka": "./Pop_ups/hayop/mahirap/talangka.png",
-"lumba-lumba": "./Pop_ups/hayop/mahirap/lumba_lumba.png",
+"lumba-lumba": "./Pop_ups/hayop/mahirap/lumba-lumba.png",
 "pukyutan": "./Pop_ups/hayop/mahirap/pukyutan.png",
 "page": "./Pop_ups/hayop/mahirap/page.png",
 
@@ -334,6 +333,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== GLOBAL BACKGROUND IMAGE =====
     const bgImg = document.createElement('img');
+
+    function popBackground(newSrc) {
+    bgImg.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+    bgImg.style.transform = 'scale(0.8)';
+    bgImg.style.opacity = '0';
+
+    setTimeout(() => {
+        bgImg.src = newSrc;
+        bgImg.style.transform = 'scale(1.05)';
+        bgImg.style.opacity = '1';
+
+        setTimeout(() => {
+            bgImg.style.transform = 'scale(1)';
+        }, 150);
+    }, 300);
+}
+
+
     bgImg.id = 'global-bg';
     bgImg.src = 'Images/1.png';
     bgImg.style.position = 'fixed';
@@ -430,22 +447,148 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const gameDiv = document.getElementById('game');
     const drawerToolbar = document.getElementById('drawerToolbar');
+
+drawerToolbar.style.position = 'absolute';
+drawerToolbar.style.top = '58vh';      // 0 distance from top
+drawerToolbar.style.left = '3.3vw';     // 0 distance from left
+drawerToolbar.style.opacity = '1';
+drawerToolbar.style.border = '2vh solid #9fa565';
+drawerToolbar.style.backgroundColor = '#ffffff';  // your peach shade
+drawerToolbar.style.borderRadius = '1vh';         // rounded corners
+drawerToolbar.style.boxShadow = '0 1vh 1vh rgba(0,0,0,0.4)'; // optional depth
+drawerToolbar.style.pointerEvents = 'auto';       // make sure clicks still work
+drawerToolbar.style.width = '26.5vw';   // or whatever width you want
+drawerToolbar.style.height = '37vh';  // or whatever height you want
+
+// optional: semi-transparent background so you see the game bg behind it
+drawerToolbar.style.background = 'rgb(255, 255, 255)';
+
+
     const canvas = document.getElementById('drawingCanvas');
     const ctx = canvas.getContext('2d');
 
     const brushSizeInput = document.getElementById('brushSize');
-    const brushTypeSelect = document.getElementById('brushType');
+    const brushTypeButtons = document.querySelectorAll('.brushTypeBtn'); // new buttons
+    let currentBrushType = 'round'; // default brush type
+
+    // ===== BRUSH TYPE BUTTONS =====
+    brushTypeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+           currentBrushType = btn.dataset.value; // 'round' or 'marker'
+         // Optional: highlight selected button
+         brushTypeButtons.forEach(b => b.classList.remove('active'));
+         btn.classList.add('active');
+        });
+    });
+
     const colorPaletteDiv = document.getElementById('colorPalette');
     const clearCanvasBtn = document.getElementById('clearCanvasBtn');
 
     const guessInput = document.getElementById('guessInput');
+
+guessInput.style.position = 'absolute';
+guessInput.style.top = '48vh';      // distance from top
+guessInput.style.left = '8vw';      // distance from left
+guessInput.style.width = '11vw';    // adjust width
+guessInput.style.height = '2vh';    // adjust height
+guessInput.style.fontSize = '1.8vh';  // text size
+guessInput.style.zIndex = '100';
+guessInput.style.borderRadius = '8px';
+guessInput.style.border = '1px solid #333';
+guessInput.style.background = 'rgba(255, 255, 255, 0.9)';
+
     const sendGuessBtn = document.getElementById('sendGuess');
+
+sendGuessBtn.style.position = 'absolute';
+sendGuessBtn.style.top = '48vh';       // same vertical alignment
+sendGuessBtn.style.left = '20vw';      // right after the input
+sendGuessBtn.style.width = '8vw';
+sendGuessBtn.style.height = '2.8vh';
+sendGuessBtn.style.fontSize = '1.8vh';
+sendGuessBtn.style.borderRadius = '8px';
+sendGuessBtn.style.border = '1px solid #333';
+sendGuessBtn.style.background = 'rgba(151, 151, 151, 0.9)'; // peach color
+sendGuessBtn.style.cursor = 'pointer';
+sendGuessBtn.style.zIndex = '100';
+
     const messagesDiv = document.getElementById('messages');
+
+messagesDiv.style.position = 'absolute';
+messagesDiv.style.top = '14vh';
+messagesDiv.style.left = '6vw';
+messagesDiv.style.width = '24vw';
+messagesDiv.style.height = '17vh';
+messagesDiv.style.fontSize = '3vh';
+messagesDiv.style.background = 'rgba(255,200,150,0)';
+messagesDiv.style.borderRadius = '10px';
+messagesDiv.style.padding = '1vh';
+messagesDiv.style.zIndex = '100';
+
     const playersListGame = document.getElementById('playersListGame');
+
+    playersListGame.style.position = 'absolute';
+    playersListGame.style.top = '32vh';    // vertical position
+    playersListGame.style.left = '6vw';  // horizontal position
+    playersListGame.style.width = '24vw';
+    playersListGame.style.height = '11vh';
+    playersListGame.style.fontSize = '2vh';
+    playersListGame.style.color = 'black'; // or whatever fits your bg
+    playersListGame.style.background = 'rgba(255, 200, 150, 0)'; // peachish box
+    playersListGame.style.borderRadius = '16px';
+    playersListGame.style.padding = '1vh';
+    playersListGame.style.zIndex = '100';
+
     const roundInfo = document.getElementById('roundInfo');
+
+    roundInfo.style.position = 'absolute';
+    roundInfo.style.top = '4vh';     // distance from top
+    roundInfo.style.left = '15vw';   // distance from left
+    roundInfo.style.transform = 'translateX(-50%)'; // center horizontally
+    roundInfo.style.fontSize = '3vh';
+    roundInfo.style.fontWeight = 'bold';
+    roundInfo.style.color = 'black';
+    roundInfo.style.background = 'rgba(255, 200, 150, 0)'; // peachish box
+    roundInfo.style.zIndex = '1000';
+
+
     const timerEl = document.getElementById('timer');
+
+    timerEl.style.position = 'absolute';
+    timerEl.style.top = '7.5vh';           // vertical position
+    timerEl.style.left = '25vw';         // horizontal position
+    timerEl.style.transform = 'translateX(-50%)'; // optional centering
+    timerEl.style.fontSize = '2.5vh';
+    timerEl.style.fontWeight = 'bold';
+    timerEl.style.color = 'black';
+    timerEl.style.background = 'rgba(255, 200, 150, 0)'; // peach box
+    timerEl.style.zIndex = '1000';
+
     const roleEl = document.getElementById('role');
+
+    roleEl.style.position = 'absolute';
+    roleEl.style.top = '7.5vh';        // adjust vertical position
+    roleEl.style.left = '17vw';       // horizontal position
+    roleEl.style.transform = 'translateX(-50%)'; // center horizontally
+    roleEl.style.fontSize = '2.5vh';
+    roleEl.style.color = 'black';
+    roleEl.style.background = 'rgba(255, 200, 150, 0)'; // rounded peach box
+    roleEl.style.zIndex = '1000';
+
     const wordText = document.getElementById('wordText');
+    const wordContainer = document.getElementById('wordContainer');
+
+    wordContainer.style.position = 'absolute';
+    wordContainer.style.top = '50vh';
+    wordContainer.style.left = '12vw';
+    wordContainer.style.transform = 'translateX(-50%)';
+    wordContainer.style.fontSize = '2.5vh';
+    wordContainer.style.fontWeight = 'bold';
+    wordContainer.style.color = 'black';
+    wordContainer.style.background = 'rgba(255, 255, 255, 0.8)';
+    wordContainer.style.padding = '0.5vh 1vh';
+    wordContainer.style.borderRadius = '1.2vh';
+    wordContainer.style.zIndex = '1000';
+
 
     settingsBox.style.pointerEvents = 'none';
     playersBox.style.pointerEvents  = 'none';
@@ -465,9 +608,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== COLOR PALETTE =====
     const COLORS = [
-        '#000000', '#ffffff', '#ff0000', '#ff7f00',
-        '#ffff00', '#00ff00', '#00ffff', '#0000ff',
-        '#8b00ff', '#ff1493', '#8b4513', '#808080'
+        '#43362e', '#e7675f', '#e89666',
+        '#f7dc75', '#abd47b', '#82d6e0',
+        '#a183d9', '#b08361', '#96918b'
     ];
 
     function buildColorPalette() {
@@ -700,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         serverForm.style.display = 'none';
         showWaitingRoom();
-        setBackground('Images/7.png');
+        popBackground('Images/7.png');
     };
 
     // ===== SERVER EVENTS =====
@@ -988,21 +1131,33 @@ socket.on('gameOver', ({ players }) => {
     canvas.addEventListener('mousedown',e=>{ if(!isDrawer)return; isDrawing=true; const r=canvas.getBoundingClientRect(); prevX=e.clientX-r.left; prevY=e.clientY-r.top; });
     canvas.addEventListener('mouseup',()=>isDrawing=false);
     canvas.addEventListener('mouseleave',()=>isDrawing=false);
-    canvas.addEventListener('mousemove',e=>{
-        if(!isDrawer||!isDrawing)return;
-        const r=canvas.getBoundingClientRect();
-        const x=e.clientX-r.left;
-        const y=e.clientY-r.top;
-        ctx.strokeStyle=currentColor;
-        ctx.lineWidth=brushSizeInput.value;
-        ctx.lineCap=brushTypeSelect.value==='marker'?'square':'round';
-        ctx.beginPath();
-        ctx.moveTo(prevX,prevY);
-        ctx.lineTo(x,y);
-        ctx.stroke();
-        socket.emit('draw',{prevX,prevY,x,y,color:currentColor,size:brushSizeInput.value,cap:ctx.lineCap});
-        prevX=x; prevY=y;
+// ===== DRAWING ON CANVAS =====
+canvas.addEventListener('mousemove', e => {
+    if(!isDrawer || !isDrawing) return;
+    const r = canvas.getBoundingClientRect();
+    const x = e.clientX - r.left;
+    const y = e.clientY - r.top;
+
+    ctx.strokeStyle = currentColor;
+    ctx.lineWidth = brushSizeInput.value;
+    ctx.lineCap = currentBrushType === 'marker' ? 'square' : 'round';
+
+    ctx.beginPath();
+    ctx.moveTo(prevX, prevY);
+    ctx.lineTo(x, y);
+    ctx.stroke();
+
+    socket.emit('draw', {
+        prevX, prevY, x, y,
+        color: currentColor,
+        size: brushSizeInput.value,
+        cap: ctx.lineCap
     });
+
+    prevX = x;
+    prevY = y;
+});
+
     socket.on('draw',d=>{
         ctx.strokeStyle=d.color;
         ctx.lineWidth=d.size;

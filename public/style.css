@@ -16,22 +16,27 @@ body, input, button, #messages, #playersList, #roundEndPopup {
 
 /* === COLOR PALETTE === */
 #colorPalette {
-  display: flex;
-  gap: 0.4vw;
+  position: relative;       /* allows children to be positioned individually */
+  width: 20vw;              /* adjust container size */
+  height: 5vh;              /* adjust container height */
   margin: 0.5vh 0;
+  border: none;             /* remove border */
+  background: transparent;  /* remove background */
 }
 
 .color-swatch {
+  position: absolute;       /* now each color can have its own top/left */
   width: 1.5vw;
   height: 1.5vw;
   border-radius: 50%;
-  cursor: pointer;
   border: 0.2vw solid #ccc;
+  cursor: pointer;
 }
 
 .color-swatch.selected {
   border: 0.2vw solid black;
 }
+
 
 /* === BODY & LAYOUT === */
 body {
@@ -93,6 +98,14 @@ canvas {
   z-index: 20;
 }
 
+#drawerToolbar {
+  display: block;           /* make sure it’s visible */
+  width: 20vw;              /* adjust width as needed */
+  height: 30vh;             /* adjust height as needed */
+  padding: 1vh;             /* optional, space inside */
+  border: 1px solid #ccc;   /* optional, just for debugging */
+  background: rgba(255,255,255,0.1); /* optional, semi-transparent to see bg */
+}
 
 /* === COLOR BUTTONS === */
 .color-btn {
