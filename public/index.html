@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="fil">
 <head>
@@ -361,3 +362,368 @@ canvas {
 
 </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="fil">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pintara</title>
+
+<style>
+@font-face {
+  font-family: 'Nerko One';
+  src: url('../Fonts/NerkoOne-Regular.ttf') format('truetype');
+}
+
+/* ===================== */
+/* BASE STYLES */
+/* ===================== */
+body {
+  font-family: 'Nerko One', sans-serif;
+  margin: 2vh;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Nerko One', sans-serif;
+}
+
+/* Hide sections by default */
+#serverForm, #waitingRoom, #game {
+  display: none;
+}
+
+/* Chat / player lists */
+#messages, #playersList, #playersListGame {
+  border: 1px solid #ccc;
+  padding: 1vh;
+  max-height: 25vh;
+  overflow-y: auto;
+  margin-bottom: 1vh;
+  font-size: 3vh;      /* increase text size */
+  font-weight: bold;  /* optional */
+  line-height: 1.2;   /* better spacing between names */
+}
+
+/* Canvas */
+canvas {
+  border: 2px solid #000;
+  display: block;
+  background: #fff;
+  max-width: 100%;
+}
+
+/* Settings Buttons */
+.setting-btn {
+  padding: 0.6em 1.2em;
+  margin: 0.4vh;
+  border-radius: 6px;
+  border: none;
+  background: rgba(255,255,255,0.85);
+}
+
+.setting-btn.active {
+  background: #ffcc66;
+}
+
+/* Waiting room layout */
+#waitingRoomLayout {
+  display: flex;
+  gap: 3vw;
+  margin-top: 2vh;
+}
+
+#waitingLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+#startGameBtn {
+  position: absolute;   /* required */
+  top: 88vh;            /* move up/down */
+  left: 74.5vw;           /* move left/right */
+
+  width: 20vw;          /* optional */
+  height: 8vh;          /* optional */
+  font-size: 3vh;       /* optional */
+}
+
+  #serverCodeBox {
+  position: absolute; /* or absolute if you want exact coordinates */
+  width: 20vw;        /* adjust width */
+  height: 10vh;       /* adjust height */
+  top: 12.3vh;           /* vertical offset */
+  left: 10vw;          /* horizontal offset */
+  padding: 2vh;
+  font-size: 3vh;     /* increase text size */
+  font-weight: bold;  /* optional: make the code stand out */
+}
+#settingsBox{display: 'block';}
+
+  
+#playersBox {
+  position: absolute;   /* lets you place it anywhere */
+  top: 8.2vh;            /* vertical position */
+  left: 66.9vw;           /* horizontal position */
+  width: 25vw;          /* box width */
+  height: 30vh;         /* box height */
+  overflow-y: auto;     /* scroll if players exceed height */
+  background: transparent; /* optional: make text visible */
+  color: black;
+  padding: 1vh;
+  border-radius: 5px;
+}
+
+
+
+
+/* Individual Difficulty Buttons */
+.difficultyBtn {
+  position: absolute;
+  width: 18vw;
+  height: 8vh;
+  font-size: 2vw;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background: rgba(255,255,255,0.85);
+}
+
+/* Example positions for difficulty */
+.difficultyBtn[data-value="madali"] { left: 5vw; top: 30vh; }
+.difficultyBtn[data-value="katamtaman"] { left: 25vw; top: 30vh; }
+.difficultyBtn[data-value="mahirap"] { left: 45vw; top: 30vh; }
+
+/* Individual Genre Buttons */
+.genreBtn {
+  position: absolute;
+  width: 18vw;
+  height: 8vh;
+  font-size: 2vw;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 2px solid #333;
+  background: rgba(255,255,255,0.85);
+}
+
+/* Example positions for genre */
+.genreBtn[data-value="tao"] { left: 5vw; top: 45vh; }
+.genreBtn[data-value="bagay"] { left: 25vw; top: 45vh; }
+.genreBtn[data-value="hayop"] { left: 45vw; top: 45vh; }
+.genreBtn[data-value="lugar"] { left: 5vw; top: 55vh; }
+.genreBtn[data-value="pagkain"] { left: 25vw; top: 55vh; }
+.genreBtn[data-value="pangyayari"] { left: 45vw; top: 55vh; }
+.genreBtn[data-value="kultura"] { left: 25vw; top: 65vh; }
+
+/* Draw tools */
+#drawerToolbar {
+  margin-bottom: 1vh;
+  padding: 1vh;
+  border: 1px solid #ccc;
+}
+
+/* Color palette */
+.color-swatch {
+  width: 3vh;
+  height: 3vh;
+  display: inline-block;
+  margin: 0.3vh;
+  border: 2px solid #444;
+  cursor: pointer;
+}
+
+.color-swatch.selected {
+  border: 3px solid #000;
+}
+
+/* Leaderboard container */
+/* Leaderboard container */
+#leaderboard {
+  display: none;          /* hide by default */
+  position: relative;     /* relative to body */
+  width: 100vw;
+  height: 100vh;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Top 3 winners */
+#leaderboard {
+    position: relative;  /* top-left of leaderboard is reference */
+    width: 100vw;
+    height: 100vh;
+    background-image: url('Images/9.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.winner.first {
+    position: absolute;
+    top: 43%;
+    left: 45%;
+    font-size: 2.5vw;
+    color: gold;
+    font-weight: bold;
+    text-align: center;
+}
+
+.winner.second {
+    position: absolute;
+    top: 43%;
+    left: 75%;
+    font-size: 2vw;
+    color: silver;
+    font-weight: bold;
+    text-align: center;
+}
+
+.winner.third {
+    position: absolute;
+    top: 43%;
+    left: 15%;
+    font-size: 2vw;
+    color: #cd7f32; /* bronze */
+    font-weight: bold;
+    text-align: center;
+}
+
+#others {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+    font-size: 1.5vw;
+    color: white;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- MAIN MENU -->
+ <audio id="bgMusic" src="Audio/Bg_Music.mp3" loop></audio>
+
+<div id="mainMenu">
+  <button id="createServerBtn">Gumawa ng Bagong Laro</button>
+  <button id="joinServerBtn">Sumali sa Laro</button>
+</div>
+
+<!-- SERVER FORM -->
+<div id="serverForm">
+  <h2 id="formTitle">Gumawa / Sumali sa Laro</h2>
+
+  <div id="serverCodeDiv">
+    <input type="text" id="serverCodeInput" maxlength="3" style="text-transform: uppercase;">
+  </div>
+
+  <div>
+    <input type="text" id="usernameInput">
+  </div>
+
+  <button id="confirmBtn">Kumpirmahin</button>
+  <button id="backBtn">Bumalik</button>
+</div>
+
+<!-- WAITING ROOM -->
+<div id="waitingRoom">
+
+  <div id="waitingRoomLayout">
+
+    <!-- LEFT SIDE -->
+    <div id="waitingLeft">
+
+      <div id="serverCodeBox">
+        <div id="serverCodeDisplay"></div>
+      </div>
+
+      <div id="settingsBox">
+        <div id="settingsDiv" style="display:none;">
+
+          <!-- Difficulty Buttons (already absolute) -->
+          <button class="difficultyBtn setting-btn" data-value="madali">Madali</button>
+          <button class="difficultyBtn setting-btn" data-value="katamtaman">Katamtaman</button>
+          <button class="difficultyBtn setting-btn" data-value="mahirap">Mahirap</button>
+
+
+          <!-- Genre Buttons (already absolute) -->
+          <button class="genreBtn setting-btn" data-value="tao"></button>
+          <button class="genreBtn setting-btn" data-value="bagay"></button>
+          <button class="genreBtn setting-btn" data-value="hayop"></button>
+          <button class="genreBtn setting-btn" data-value="lugar"></button>
+          <button class="genreBtn setting-btn" data-value="pagkain"></button>
+          <button class="genreBtn setting-btn" data-value="pangyayari"></button>
+          <button class="genreBtn setting-btn" data-value="kultura"></button>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div id="playersBox">
+    
+      <div id="playersList"></div>
+    </div>
+
+  </div>
+
+  <button id="startGameBtn" >Simulan ang Laro</button>
+</div>
+
+<!-- GAME -->
+<div id="game">
+  <h2 id="roundInfo">Round Info</h2>
+  <p id="role">Role</p>
+  <p id="wordContainer">Salitang Huhulaan: <strong><span id="wordText">—</span></strong></p>
+  <p id="timer">Oras: 0s</p>
+
+  <!-- DRAWER TOOLS -->
+  <div id="drawerToolbar" style="display:none;">
+    <label>
+      Laki ng Brush:
+      <input type="range" id="brushSize" min="1" max="15" value="4">
+    </label>
+
+    <div>
+      <strong>Mga Kulay:</strong>
+      <div id="colorPalette"></div>
+    </div>
+
+<div id="brushTypeContainer" style="position:absolute; display:none;">
+  <strong>Uri ng Brush:</strong><br>
+  <button class="brushTypeBtn" data-type="round">Round</button>
+  <button class="brushTypeBtn" data-type="marker">Marker</button>
+</div>
+
+    <button id="clearCanvasBtn">Linisin</button>
+  </div>
+
+  <canvas id="drawingCanvas" width="1200" height="800"></canvas>
+
+  <div>
+    <input type="text" id="guessInput" placeholder="I-type ang hula...">
+    <button id="sendGuess">Ipadala ang Hula</button>
+  </div>
+
+  <div id="messages"></div>
+  <ul id="playersListGame"></ul>
+</div>
+<div id="leaderboard">
+    <div class="winner first"></div>
+    <div class="winner second"></div>
+    <div class="winner third"></div>
+
+    <div id="others"></div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js" defer></script>
+
+</body>
+</html>
+>>>>>>> 8f29f47 (Pop-ups)
