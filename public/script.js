@@ -986,7 +986,7 @@ messagesDiv.style.zIndex = '100';
         hideWaitingRoom();
         gameDiv.style.display = 'block';
         drawerToolbar.style.display = 'none';
-        setGameplayBackground('Images/Interface.png');
+        setGameplayBackground('Images/Interface.PNG');
         roundInfo.textContent = `Round ${data.round}`;
         currentDrawerId = data.drawerId;
         clearCanvas();
@@ -1171,5 +1171,6 @@ canvas.addEventListener('mousemove', e => {
     socket.on('clearCanvas', clearCanvas);
 
 });
+
 
 
